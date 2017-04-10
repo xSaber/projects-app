@@ -1,0 +1,46 @@
+<div layout-fill layout="row">
+    <md-sidenav class="md-sidenav-left side-menu" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="1" layout-align=" stretch">
+        <md-content layout-padding>
+            <md-list>
+                <md-list-item>
+                    <img alt="avatar" ng-src="{{ menu.user.image_url }}" class="md-avatar" />
+                    <p>{{ menu.user.username }}</p>
+                </md-list-item>
+            </md-list>
+
+            <md-list>
+                <md-list-item>
+                    <div class="md-list-item-text" layout="raw">
+                        <p class="md-caption">Projects</p>
+                        <div class="md-secondary clickable">
+                            <i class="icons8-plus" ng-click="menu.toggleCreateProjectSidenav()"></i>
+                        </div>
+                    </div>
+                </md-list-item>
+                <md-list-item class="md-1-line project-item" ng-class="{ 'active' : menu.selectedProjectIndex === $index }"
+                ng-click="menu.selectProject($index)" ng-repeat="item in menu.projects track by $index">
+                    <div class="md-list-item-text">
+                        <p>{{ item.Project.title }}</p>
+                        <p class="md-secondary">{{ item.Project.task_count }}</p>
+                    </div>
+                </md-list-item>
+            </md-list>
+        </md-content>
+    </md-sidenav>
+
+    <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="createProject" flex layout="row">
+        <md-content layout-padding flex>
+            <h4 class="sidenav-header">Create new project</h4>
+            <form layout="column" layout-align="center center">
+                <md-input-container>
+                    <label for="projectTitle">Project name</label>
+                    <input type="text" id="projectTitle" ng-model="menu.project.title" md-autofocus>
+                </md-input-container>
+            </form>
+            <md-button class="md-fab md-fab-bottom-right" aria-label="add task" ng-click="menu.createProject(menu.project)" ng-disabled="!menu.project.title">
+                <md-icon class="add-task-icon" md-font-icon="icons8-checkmark"></md-icon>
+            </md-button>
+        </md-content>
+    </md-sidenav>
+
+</div>

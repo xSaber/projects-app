@@ -1,0 +1,84 @@
+<div layout="column">
+    <div class="tasks-container" layout="column" layout-align="center center">
+
+        <div class="search-no-results" layout="column" layout-align="center center" ng-if="container.tasks.length === 0">
+            <i class="icons8-todo-list"></i>
+            <h3>Have a good day!</h3>
+        </div>
+
+        <div class="task-block clickable" ng-repeat="item in container.tasks">
+            <md-card class="md-1-line">
+                <md-card-content layout="column">
+                    <div class="task" layout="row">
+                        <md-radio-group ng-model="item.completed" ng-change="container.completeTask(item.completed)" flex-offset="1" layout="row">
+                            <md-radio-button aria-label="{{ item.Task.title }}" ng-value="item.Task.id" class="md-primary"></md-radio-button>
+                        </md-radio-group>
+                        <md-divider></md-divider>
+                        <div class="task-content" ng-click="container.toggleEditTaskSidenav(item.Task)">
+                            <span>{{ item.Task.title }}</span>
+                        </div>
+                    </div>
+
+                    <!-- <md-divider></md-divider> -->
+
+                    <!-- <div class="task" layout="row">
+                        <md-radio-group ng-model="data.group1" flex-offset="1" layout="row">
+                            <md-radio-button value="Apple" class="md-primary"></md-radio-button>
+                        </md-radio-group>
+                        <md-divider></md-divider>
+                        <div class="task-content">
+                            <span>HTML5 is the next major revision of the HTML standard superseding HTML 4.01, XHTML 1.0, and XHTML</span>
+                        </div>
+                    </div> -->
+                </md-card-content>
+            </md-card>
+        </div>
+    </div>
+
+    <md-button class="md-fab md-fab-bottom-right" aria-label="add task" ng-click="container.toggleCreateTaskSidenav()">
+        <md-icon class="add-task-icon" md-font-icon="icons8-plus"></md-icon>
+    </md-button>
+
+    <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="addTask" flex layout="row">
+        <md-content layout-padding flex>
+            <h4 class="sidenav-header">Create new task</h4>
+            <form layout="column" layout-align="center center">
+                <md-input-container>
+                    <label for="taskTitle">Task name</label>
+                    <input type="text" id="taskTitle" ng-model="container.Task.title" md-autofocus>
+                </md-input-container>
+                <md-input-container>
+                    <label for="taskDescription">Description</label>
+                    <input type="text" id="taskDescription" ng-model="container.Task.description">
+                </md-input-container>
+            </form>
+            <md-button class="md-fab md-fab-bottom-right" aria-label="add task" ng-click="container.createTask(container.Task)" ng-disabled="!container.Task.title">
+                <md-icon class="add-task-icon" md-font-icon="icons8-checkmark"></md-icon>
+            </md-button>
+        </md-content>
+    </md-sidenav>
+
+    <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="editTask" flex layout="row">
+        <md-content layout-padding flex>
+            <div class="task-edit-header" layout="row" layout-align="end start">
+                <i class="icons8-edit" ng-click="container.updateTask()"></i>
+                <i class="icons8-delete" ng-click="container.removeTask()"></i>
+            </div>
+            <form layout="column" layout-align="center center">
+                <md-input-container>
+                    <label for="taskTitle">Task name</label>
+                    <input type="text" id="taskTitle" ng-model="container.selectedTask.title" md-autofocus>
+                </md-input-container>
+                <md-input-container>
+                    <label for="taskDescription">Description</label>
+                    <textarea id="taskDescription" ng-model="container.selectedTask.description">
+                </md-input-container>
+            </form>
+            <md-button class="md-fab md-fab-bottom-right" aria-label="add task" ng-click="container.createTask(container.Task)"
+            ng-disabled="!container.Task.title">
+                <md-icon class="add-task-icon" md-font-icon="icons8-checkmark"></md-icon>
+            </md-button>
+        </md-content>
+    </md-sidenav>
+
+</div>

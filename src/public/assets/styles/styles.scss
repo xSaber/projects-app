@@ -1,0 +1,130 @@
+@import './icons/scss/styles.scss';
+
+
+/** Ultra Light */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 100;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-ultralight-webfont.woff");
+}
+
+/** Thin */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 200;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-thin-webfont.woff");
+}
+
+/** Regular */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 400;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+}
+
+/** Medium */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 500;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-medium-webfont.woff");
+}
+
+/** Semi Bold */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 600;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-semibold-webfont.woff");
+}
+
+/** Bold */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 700;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.woff");
+}
+
+* {
+    font-family: "San Francisco"
+}
+
+.app-content {
+    height: 100vh;
+}
+
+.side-menu {
+    z-index: 50;
+}
+
+input.search-field {
+    width: 100%;
+    background: none;
+    border-width: 0;
+    box-sizing: border-box;
+    line-height: 26px;
+    height: 30px;
+    padding-left: 25px;
+    &:focus {
+        outline: none;
+    }
+}
+
+.search-wrapper {
+    position: relative;
+    border-color: rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    i {
+        position: absolute;
+        top: 11px;
+        left: 5px;
+    }
+}
+
+.search-no-results {
+    color: #b1b1c8;
+    & i {
+        font-size: 150px;
+    }
+}
+
+.task-block {
+    width: 70%;
+}
+
+.task-content {
+    margin-left: 10px;
+    width: 100%;
+}
+
+.sidenav-header {
+    text-align: center;
+}
+
+.task {
+    line-height: 30px;
+}
+
+.add-task-icon {
+    font-size: 25px;
+}
+
+.project-item {
+    cursor: pointer;
+    border-radius: 4px;
+    &.active {
+        background-color: #6b6b99;
+    }
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.task-edit-header {
+    & i {
+        color: #51555e;
+        &:last-of-type {
+            margin-left: 15px;
+        }
+    }
+}
