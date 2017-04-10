@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const isProduction = process.env.NODE_ENV === 'production';
 
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
     template: './src/public/views/index.html',
@@ -8,9 +9,12 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
     inject: 'body'
 });
 
+if (isProduction) {
+    var devtool = 'source-map';
+}
 
 module.exports = {
-    devtool: 'eval-source-map',
+    devtool: devtool,
     entry: './src/app/app.module.js',
     output: {
         path: path.resolve('dist'),

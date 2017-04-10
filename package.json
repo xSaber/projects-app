@@ -12,7 +12,9 @@
     "angular-ui-router": "^0.4.2"
   },
   "scripts": {
-    "start": "nodemon --watch webpack.config.js ./node_modules/.bin/webpack-dev-server"
+    "development": "nodemon --watch webpack.config.js ./node_modules/.bin/webpack-dev-server",
+    "start": "node server",
+    "heroku-postbuild": "webpack -p --progress --color"
   },
   "devDependencies": {
     "babel-core": "^6.24.0",
