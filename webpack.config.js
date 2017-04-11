@@ -9,9 +9,9 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
     inject: 'body'
 });
 
-if (isProduction) {
-    var devtool = 'source-map';
-}
+
+var devtool = isProduction ? 'source-map' : 'eval-source-map';
+
 
 module.exports = {
     devtool: devtool,

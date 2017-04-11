@@ -4,9 +4,10 @@ export default class sideMenu {
 
     constructor () {
         this.bindings = {
-            user: '<',
-            projects: '=',
-            onSelect: '&'
+            user     : '<',
+            projects : '<',
+            onSelect : '&',
+            onCreate : '&'
         }
         this.controller = 'SideMenuController as menu';
         this.templateUrl = sideMenuTemplateUrl;

@@ -16,6 +16,14 @@ export default class SideMenuController {
         }
     }
 
+    $onChanges (changes) {
+        if (!changes.projects.isFirstChange()) {
+            this.selectProject(this.selectedProjectIndex);
+            this.project = {};
+            this.closeCreateProjectSidenav();
+        }
+    }
+
     selectProject (index) {
         if (this.projects[index] !== undefined) {
             this.selectedProjectIndex = index;
@@ -27,21 +35,20 @@ export default class SideMenuController {
         }
     }
 
-    toggleCreateProjectSidenav () {
+    openCreateProjectSidenav () {
         let $mdSidenav = _$mdSidenav.get(this);
-        $mdSidenav('createProject').toggle().then(() => console.log('createProject toggled'));
+        $mdSidenav('createProject').open();
+    }
+
+    closeCreateProjectSidenav () {
+        let $mdSidenav = _$mdSidenav.get(this);
+        $mdSidenav('createProject').close();
     }
 
     createProject (project) {
-        let projectsService = _projectsService.get(this);
-        projectsService.createProject(project).then((response) => {
-            let newProject = Object.assign({ task_count : 0 }, project, response.Project);
-            this.projects.push({ Project : newProject });
-            this.project = {};
-            this.toggleCreateProjectSidenav();
+        this.onCreate({
+            $event : { project }
         });
     }
-
-    
 
 }

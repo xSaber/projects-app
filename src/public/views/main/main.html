@@ -1,10 +1,10 @@
 <section layout="row" layout-fill>
 
-    <side-menu user="main.user" projects="main.projects" on-select="main.selectProject($event)"></side-menu>
+    <side-menu user="main.user" projects="main.projects" on-select="main.selectProject($event)" on-create="main.createProject($event)"></side-menu>
 
     <md-content flex>
 
-        <task-search></task-search>
+        <task-search project="main.project" on-project-remove="main.removeProject()" on-project-edit="main.editProject($event)"></task-search>
 
         <task-container project="main.project" on-task-add="main.incrementTaskCount()" on-task-remove="main.decrementTaskCount()"></task-container>
 

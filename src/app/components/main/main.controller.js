@@ -1,11 +1,11 @@
-let _$mdSidenav = new WeakMap();
+let _projectsService = new WeakMap();
 
 export default class MainController {
 
-    constructor($mdSidenav, user, projects) {
+    constructor(user, projects, projectsService) {
         'ngInject';
 
-        _$mdSidenav.set(this, $mdSidenav);
+        _projectsService.set(this, projectsService);
 
         this.user = user;
         this.projects = projects;
@@ -23,7 +23,25 @@ export default class MainController {
         this.project.Project.task_count = (+this.project.Project.task_count - 1) + '';
     }
 
-    openMenu ($mdMenu, event) {
-        $mdMenu.open(event);
+    createProject (event) {
+        let projectsService = _projectsService.get(this);
+        projectsService.createProject(event.project).then((response) => {
+            let newProject = Object.assign({ task_count : 0 }, event.project, response.Project);
+            this.projects = this.projects.concat({ Project : newProject });
+        });
+    }
+
+    removeProject () {
+        let projectsService = _projectsService.get(this);
+        projectsService.removeProject(this.project.Project).then((response) => {
+            this.projects = this.projects.filter(element => element.Project.id === this.project.Project.id ? false : true);
+        });
+    }
+
+    editProject (event) {
+        let projectsService = _projectsService.get(this);
+        projectsService.editProject(event.project).then((response) => {
+            this.projects = this.projects.map(element => element.Project.id === event.project.id ? Object.assign({}, element, response) : element);
+        });
     }
 }

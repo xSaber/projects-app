@@ -18,7 +18,6 @@ export default class TaskContainerController {
      * Watches for project change, then fetches tasks for selected project.
      */
     $onChanges (changes) {
-        console.log('changed in taskContainer')
         let projectsService = _projectsService.get(this);
         let { id } = changes.project.currentValue.Project;
         projectsService.getTasks(id).then(response => this.tasks = response.tasks)
@@ -67,7 +66,7 @@ export default class TaskContainerController {
     updateTask () {
         let projectsService = _projectsService.get(this);
         projectsService.updateTask(this.selectedTask).then((response) => {
-            this.tasks = this.tasks.map(element => element.Task.id === response.Task.id ? Object.assign(element, response) : element);
+            this.tasks = this.tasks.map(element => element.Task.id === response.Task.id ? Object.assign({}, element, response) : element);
             this.toggleEditTaskSidenav();
         });
     }

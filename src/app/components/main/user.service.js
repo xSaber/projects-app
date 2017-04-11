@@ -17,18 +17,21 @@ export default class UserService {
 
         if (!!user) {
             let { session, ...publicUser } = user;
-            return this.$http.get(this.appParameters.baseApiUrl + '/session', { params: { session } }).then(() => publicUser);
+            return this.$http.get(this.appParameters.baseApiUrl + '/session', { params: { session } })
+                .then(() => publicUser);
         } else {
             return Promise.reject();
         }
     }
 
     getSession () {
-        return this.$http.post(this.appParameters.baseApiUrl + '/signup').then(response => response.data);
+        return this.$http.post(this.appParameters.baseApiUrl + '/signup')
+            .then(response => response.data);
     }
 
     createUser (session) {
-        return this.$http.get(this.appParameters.baseApiUrl + '/account', { params: { session } }).then(response => response.data);
+        return this.$http.get(this.appParameters.baseApiUrl + '/account', { params: { session } })
+            .then(response => response.data);
     }
 
     saveSession (user) {
