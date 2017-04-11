@@ -73,11 +73,16 @@ input.search-field {
     border-color: rgba(0, 0, 0, 0.12);
     box-sizing: border-box;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-    i {
+    i, md-icon {
         position: absolute;
         top: 11px;
         left: 5px;
+        color: #b3bbcb;
     }
+}
+
+md-radio-button.md-default-theme .md-off, md-radio-button .md-off, .layout-row>md-divider {
+    border-color: #6b6b99;
 }
 
 .search-no-results {

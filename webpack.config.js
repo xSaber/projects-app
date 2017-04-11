@@ -12,7 +12,6 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 
 var devtool = isProduction ? 'source-map' : 'eval-source-map';
 
-
 module.exports = {
     devtool: devtool,
     entry: './src/app/app.module.js',

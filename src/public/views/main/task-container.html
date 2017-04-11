@@ -7,35 +7,37 @@
         </div>
 
         <div class="task-block clickable" ng-repeat="item in container.tasks">
-            <md-card class="md-1-line">
-                <md-card-content layout="column">
-                    <div class="task" layout="row">
-                        <md-radio-group ng-model="item.completed" ng-change="container.completeTask(item.completed)" flex-offset="1" layout="row">
-                            <md-radio-button aria-label="{{ item.Task.title }}" ng-value="item.Task.id" class="md-primary"></md-radio-button>
-                        </md-radio-group>
-                        <md-divider></md-divider>
-                        <div class="task-content" ng-click="container.toggleEditTaskSidenav(item.Task)">
-                            <span>{{ item.Task.title }}</span>
+            <md-card>
+                <md-toolbar class="md-background">
+                    <md-card-content layout="column">
+                        <div class="task" layout="row">
+                            <md-radio-group ng-model="item.completed" ng-change="container.completeTask(item.completed)" flex-offset="1" layout="row">
+                                <md-radio-button aria-label="{{ item.Task.title }}" ng-value="item.Task.id"></md-radio-button>
+                            </md-radio-group>
+                            <md-divider></md-divider>
+                            <div class="task-content" ng-click="container.toggleEditTaskSidenav(item.Task)">
+                                <span>{{ item.Task.title }}</span>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- <md-divider></md-divider> -->
+                        <!-- <md-divider></md-divider> -->
 
-                    <!-- <div class="task" layout="row">
-                        <md-radio-group ng-model="data.group1" flex-offset="1" layout="row">
-                            <md-radio-button value="Apple" class="md-primary"></md-radio-button>
-                        </md-radio-group>
-                        <md-divider></md-divider>
-                        <div class="task-content">
-                            <span>HTML5 is the next major revision of the HTML standard superseding HTML 4.01, XHTML 1.0, and XHTML</span>
-                        </div>
-                    </div> -->
-                </md-card-content>
+                        <!-- <div class="task" layout="row">
+                            <md-radio-group ng-model="data.group1" flex-offset="1" layout="row">
+                                <md-radio-button value="Apple" class="md-primary"></md-radio-button>
+                            </md-radio-group>
+                            <md-divider></md-divider>
+                            <div class="task-content">
+                                <span>HTML5 is the next major revision of the HTML standard superseding HTML 4.01, XHTML 1.0, and XHTML</span>
+                            </div>
+                        </div> -->
+                    </md-card-content>
+                </md-toolbar>
             </md-card>
         </div>
     </div>
 
-    <md-button class="md-fab md-fab-bottom-right" aria-label="add task" ng-click="container.toggleCreateTaskSidenav()">
+    <md-button class="md-fab md-fab-bottom-right md-accent" aria-label="add task" ng-click="container.toggleCreateTaskSidenav()">
         <md-icon class="add-task-icon" md-font-icon="icons8-plus"></md-icon>
     </md-button>
 
