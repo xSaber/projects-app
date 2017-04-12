@@ -1,0 +1,14 @@
+<md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="editProject" flex layout="row">
+    <md-content layout-padding flex>
+        <h4 class="sidenav-header">Edit project</h4>
+        <form name="editProjectSidenav.editProjectForm" novalidate layout="column" layout-align="center center" ng-submit="editProjectSidenav.editProject(editProjectSidenav.selectedProject)">
+            <md-input-container>
+                <label for="projectTitle">Project name</label>
+                <input type="text" id="projectTitle" required ng-model="editProjectSidenav.selectedProject.title" md-autofocus>
+            </md-input-container>
+            <md-button type="submit" class="md-fab md-fab-bottom-right" aria-label="edit project" ng-disabled="editProjectSidenav.editProjectForm.$invalid">
+                <md-icon class="add-task-icon" md-font-icon="icons8-checkmark"></md-icon>
+            </md-button>
+        </form>
+    </md-content>
+</md-sidenav>

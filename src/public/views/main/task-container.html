@@ -37,7 +37,7 @@
         </div>
     </div>
 
-    <md-button class="md-fab md-fab-bottom-right md-accent" aria-label="add task" ng-click="container.toggleCreateTaskSidenav()">
+    <md-button class="md-fab md-fab-bottom-right md-accent" aria-label="add task" ng-if="container.project" ng-click="container.toggleCreateTaskSidenav()">
         <md-icon class="add-task-icon" md-font-icon="icons8-plus"></md-icon>
     </md-button>
 

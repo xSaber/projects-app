@@ -20,35 +20,30 @@ export default class SideMenuController {
         if (!changes.projects.isFirstChange()) {
             this.selectProject(this.selectedProjectIndex);
             this.project = {};
-            this.closeCreateProjectSidenav();
         }
     }
 
     selectProject (index) {
         if (this.projects[index] !== undefined) {
             this.selectedProjectIndex = index;
-            this.onSelect({
+            this.onProjectSelect({
                 $event : {
                     project : this.projects[index]
+                }
+            });
+        } else if (this.projects.length > 0) {
+            this.selectProject(0)
+        } else {
+            this.onProjectSelect({
+                $event : {
+                    project : null
                 }
             });
         }
     }
 
     openCreateProjectSidenav () {
-        let $mdSidenav = _$mdSidenav.get(this);
-        $mdSidenav('createProject').open();
-    }
-
-    closeCreateProjectSidenav () {
-        let $mdSidenav = _$mdSidenav.get(this);
-        $mdSidenav('createProject').close();
-    }
-
-    createProject (project) {
-        this.onCreate({
-            $event : { project }
-        });
+        this.onOpenCreateProjectSidenav();
     }
 
 }

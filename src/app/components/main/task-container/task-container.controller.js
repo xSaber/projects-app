@@ -6,7 +6,7 @@ export default class TaskContainerController {
     constructor($mdSidenav, projectsService) {
         'ngInject';
 
-        // this.tasks = [];
+        this.tasks = [];
         this.Task = {};
         this.selectedTask = {}
 
@@ -18,6 +18,10 @@ export default class TaskContainerController {
      * Watches for project change, then fetches tasks for selected project.
      */
     $onChanges (changes) {
+        if (!changes.project.currentValue) {
+            this.tasks = [];
+            return;
+        }
         let projectsService = _projectsService.get(this);
         let { id } = changes.project.currentValue.Project;
         projectsService.getTasks(id).then(response => this.tasks = response.tasks)

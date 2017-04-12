@@ -6,8 +6,8 @@ export default class sideMenu {
         this.bindings = {
             user     : '<',
             projects : '<',
-            onSelect : '&',
-            onCreate : '&'
+            onProjectSelect : '&',
+            onOpenCreateProjectSidenav : '&'
         }
         this.controller = 'SideMenuController as menu';
         this.templateUrl = sideMenuTemplateUrl;

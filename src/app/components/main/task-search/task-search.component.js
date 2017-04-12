@@ -6,7 +6,8 @@ export default class taskSearch {
         this.bindings = {
             project         : '<',
             onProjectRemove : '&',
-            onProjectEdit   : '&'
+            onOpenEditProjectSidenav : '&',
+            onProjectCreate   : '&'
         }
         this.controller = 'TaskSearchController as search';
         this.templateUrl = taskSearchTemplateUrl;

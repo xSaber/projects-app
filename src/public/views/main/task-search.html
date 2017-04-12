@@ -7,28 +7,16 @@
                 <md-icon class="md-accent-theme" md-menu-origin md-font-icon="icons8-more"></md-icon>
             </md-button>
             <md-menu-content width="4">
-                <md-menu-item>
+                <md-menu-item ng-show="search.project">
                     <md-button ng-click="search.openEditProjectSidenav(search.project.Project)">Edit "{{ search.project.Project.title }}"</md-button>
                 </md-menu-item>
-                <md-menu-item>
+                <md-menu-item ng-show="search.project">
                     <md-button ng-click="search.removeProject()">Remove "{{ search.project.Project.title }}"</md-button>
+                </md-menu-item>
+                <md-menu-item ng-show="!search.project">
+                    <md-button>Create new project</md-button>
                 </md-menu-item>
             </md-menu-content>
         </md-menu>
     </div>
-
-    <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="editProject" flex layout="row">
-        <md-content layout-padding flex>
-            <h4 class="sidenav-header">Edit project</h4>
-            <form layout="column" layout-align="center center">
-                <md-input-container>
-                    <label for="projectTitle">Project name</label>
-                    <input type="text" id="projectTitle" ng-model="search.selectedProject.title" md-autofocus>
-                </md-input-container>
-            </form>
-            <md-button class="md-fab md-fab-bottom-right" aria-label="add task" ng-click="search.editProject(search.selectedProject)" ng-disabled="!search.selectedProject.title">
-                <md-icon class="add-task-icon" md-font-icon="icons8-checkmark"></md-icon>
-            </md-button>
-        </md-content>
-    </md-sidenav>
 </div>

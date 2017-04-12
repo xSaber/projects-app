@@ -1,13 +1,39 @@
 <section layout="row" layout-fill>
 
-    <side-menu user="main.user" projects="main.projects" on-select="main.selectProject($event)" on-create="main.createProject($event)"></side-menu>
+    <side-menu user="main.user"
+               projects="main.projects"
+               on-project-select="main.selectProject($event)"
+               on-open-create-project-sidenav="main.openCreateProjectSidenav()">
+    </side-menu>
 
     <md-content flex>
 
-        <task-search project="main.project" on-project-remove="main.removeProject()" on-project-edit="main.editProject($event)"></task-search>
+        <task-search project="main.project"
+                     on-project-remove="main.removeProject()"
+                     on-project-edit="main.editProject($event)"
+                     on-project-create="main.createProject($event)" on-open-edit-project-sidenav="main.openEditProjectSidenav()">
+        </task-search>
 
         <task-container project="main.project" on-task-add="main.incrementTaskCount()" on-task-remove="main.decrementTaskCount()"></task-container>
 
     </md-content>
+
+    <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="createProject" flex layout="row">
+        <md-content layout-padding flex>
+            <h4 class="sidenav-header">Create new project</h4>
+            <form name="main.createProjectForm" novalidate layout="column" layout-align="center center" ng-submit="main.createProject(main.newProject)">
+                <md-input-container>
+                    <label for="projectTitle">Project name</label>
+                    <input type="text" name="title" id="projectTitle" required ng-model="main.newProject.title" md-autofocus>
+                </md-input-container>
+                <md-button type="submit" class="md-fab md-fab-bottom-right" aria-label="create project" ng-disabled="main.createProjectForm.$invalid">
+                    <md-icon class="add-task-icon" md-font-icon="icons8-checkmark"></md-icon>
+                </md-button>
+            </form>
+        </md-content>
+    </md-sidenav>
+
+    <edit-project-sidenav project="main.project" on-project-edit="main.editProject($event)"></edit-project-sidenav>
+
 
 </section>
